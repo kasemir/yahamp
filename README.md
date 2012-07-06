@@ -1,4 +1,7 @@
 yahamp
 ======
 
-Eclipse E4 Projects
+ * Yet Another HAM Program
+ * Eclipse E4 Playground
+
+See https://github.com/kasemir/yahamp/wiki
