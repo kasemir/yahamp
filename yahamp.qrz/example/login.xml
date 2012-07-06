@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!-- Example response to login request:
+    http://www.qrz.com/xml?username=xx1xxx;password=abcdef;agent=yahamp
+  --> 
+<QRZDatabase version="1.18" xmlns="http://www.qrz.com">
+  <Session>
+    <Key>12345abcdef</Key> 
+    <Count>123</Count> 
+    <SubExp>Wed Jan 1 12:34:03 2010</SubExp> 
+    <GMTime>Sun Aug 16 03:51:47 2009</GMTime> 
+  </Session>
+</QRZDatabase>

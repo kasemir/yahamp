@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_bR3CIMSaEeGfw8Gmsqh_OA">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_n2QbsMXrEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.left.top">
+    <elements xsi:type="basic:Part" xmi:id="_r-n_QMXrEeGh4vbnqVi6PQ" elementId="yahamp.ui.qso" contributionURI="bundleclass://yahamp.ui/yahamp.ui.qso.QSOEditPart" label="%qso" iconURI="platform:/plugin/yahamp.ui/icons/qso.png"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="__ilHEMXrEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.left.middle">
+    <elements xsi:type="basic:Part" xmi:id="_C7C3sMXsEeGh4vbnqVi6PQ" elementId="yahamp.ui.call" contributionURI="bundleclass://yahamp.ui/yahamp.ui.call.CallEditPart" label="%call" iconURI="platform:/plugin/yahamp.ui/icons/call.png"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_iyoE4MSaEeGfw8Gmsqh_OA" featurename="children" parentElementId="yahamp.app.partstack.left.bottom">
+    <elements xsi:type="basic:Part" xmi:id="_yYp-kMSaEeGfw8Gmsqh_OA" elementId="yahamp.ui.previous_qsos" contributionURI="bundleclass://yahamp.ui/yahamp.ui.previous_qsos.PreviousQSOsPart" label="%previous_qsos" iconURI="platform:/plugin/yahamp.ui/icons/qso.png"/>
+    <elements xsi:type="basic:Part" xmi:id="_NDTRIMacEeGh4vbnqVi6PQ" elementId="yahamp.ui.rig" contributionURI="bundleclass://yahamp.ui/yahamp.ui.rig.RigControlPart" label="%rig"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_mYBGoMXsEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.main">
+    <elements xsi:type="basic:Part" xmi:id="_nfRpoMXsEeGh4vbnqVi6PQ" elementId="yahamp.ui.log" contributionURI="bundleclass://yahamp.ui/yahamp.ui.log.LogDisplayPart" label="%log" iconURI="platform:/plugin/yahamp.ui/icons/log.gif"/>
+    <elements xsi:type="basic:Part" xmi:id="_mNzRUMYFEeGh4vbnqVi6PQ" elementId="yahamp.ui.call.qrz" contributionURI="bundleclass://yahamp.ui/yahamp.ui.call.QRZCallDisplayPart" label="%qrz" iconURI="platform:/plugin/yahamp.ui/icons/call.png"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_AxF_cMYqEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.bottom">
+    <elements xsi:type="basic:Part" xmi:id="_EqJUoMYqEeGh4vbnqVi6PQ" elementId="yahamp.ui.map" contributionURI="bundleclass://yahamp.ui/yahamp.ui.map.MapDisplayPart" label="%map" iconURI="platform:/plugin/yahamp.ui/icons/earth.png"/>
+  </fragments>
+</fragment:ModelFragments>

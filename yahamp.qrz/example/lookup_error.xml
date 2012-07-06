@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso8859-1" ?>
+<QRZDatabase version="1.25" xmlns="http://www.qrz.com">
+<Session>
+<Error>Not found: AB1XYZQ</Error>
+<Key>b9e3f9e2abadf553a579e561aeb65dc6</Key>
+<Count>231</Count>
+<SubExp>Tue Jul  2 00:00:00 2013</SubExp>
+<GMTime>Wed Jul  4 17:11:37 2012</GMTime>
+<Remark>cpu: 0.029s</Remark>
+</Session>
+</QRZDatabase>

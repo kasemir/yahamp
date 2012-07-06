@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+  <title>YAHAMP</title>
+  <link rel="stylesheet" href="book.css" type="text/css"></link>
+</head>
+<body>
+
+<h1>Yet Another HAM Program - YAHAMP!</h1>
+
+<span class="index">
+- <a href='#start'>Getting Started</a>
+- <a href='#rdb'>Database Setup</a>
+- <a href='#prefs'>Preference Settings</a>
+- <a href='#callbook'>Callbook Lookup</a>
+- <a href='#prefixes'>Prefix Information</a>
+- <a href='#flags'>Flags</a>
+- <a href='#rigctrl'>Rig Control</a>
+- <a href='#license'>License</a>
+- <a href='#changes'>Change Log</a>
+-
+</span>
+
+
+<h2><a name="start">Getting Started</a></h2>
+<p>
+Before running YAHAMP for the first time,
+you need to perform the <a href='#rdb'>Database Setup</a>
+described in the following section.
+</p>
+
+<h2><a name="rdb">Database Setup</a></h2>
+<p>
+You need to install MySQL and know its 'root' password.
+The free 'Community' version of MySQL, and for that the bare 'essential'
+package with database server and command-line client is all that's required.
+</p>
+<p>
+After you install MySQL, create the initial YAHAMP database like this:
+<pre>
+# Connect to MySQL as 'root', enter your password when prompted.
+mysql -u root -p
+
+# Create database
+create database yahamp;
+
+# Add user 'yahamp' with password '$yahamp' who can access the 'yahamp' tables
+grant all on yahamp.* TO yahamp IDENTIFIED BY '$yahamp';
+
+# Try to connect as that user
+# (on MS Windows, do NOT use quotes around $yahamp!)
+mysql -u yahamp -p'$yahamp' yahamp
+
+# Create YAHAMP database tables using the file from the 'doc' directory
+# (might have to specify the full path to the file
+#  which is located under plugins/yahamp.rdb*/dbd)
+source create_yahamp.sql
+</pre>
+</p>
+
+
+<h2><a name="prefs">Preference Settings</a></h2>
+<p>
+Edit the file
+<code>plugins/yahamp.app*/plugin_customization.ini</code>
+</p>
+
+
+<h2><a name="callbook">Callbook Lookup</a></h2>
+<p>
+YAHAMP keeps its own call information that allows you
+to enter the name or country information for a call sign as
+you desire.
+For unknown call signs, i.e. call signs for which no information
+has been entered into the local callbook, an automated callbook
+query to
+<a href="http://www.qrz.com/">http://www.qrz.com/</a>
+can be used to obtain the essential information: Name, country, ...
+</p>
+<p>
+To allow YAHAMP to access the QRZ database, you need to
+obtain a QRZ account and enter your name and password
+to the <a href='#prefs'>Preference Settings</a>.
+If you have a free, basic account, QRZ will only provide
+the user name associated with a call sign.
+If you have a subscription to the QRZ XML database,
+full location information is available.
+</p>
+
+
+<h2><a name=prefixes>Prefix Information</a></h2>
+<p>
+YAHAMP uses a CTY.DAT file to obtain prefix information, for example
+to determine that call signs starting with "XC..." belong to stations
+located in Mexico, DXCC entity "XE".
+</p>
+<p>
+The included doc/cty.dat file was obtained from the web page by Jim Reisert, AD1C,
+and the latest version can be downloaded from
+<a href="http://www.country-files.com/cty/cty.dat">
+http://www.country-files.com/cty/cty.dat</a>
+</p>
+
+<h2><a name=flags>Flags</a></h2>
+<p>
+YAHAMP tries to display a flag for the country of each call sign.
+The flags included in YAHAMP are from
+<a href="http://www.customicondesign.com/free-icon/">http://www.customicondesign.com/free-icon</a>,
+a web site which states:
+"All the icons contained in this set are free for non-commercial use."S
+</p>
+
+
+<h2><a name=rigctrl>Rig Control</a></h2>
+<p>
+A serial line is used to read the current frequency and mode of the radio,
+and to set the frequency. On computers that have no serial interface,
+a USB-to-Serial interface is required. Some rig interfaces like the
+'Rigblaster plug & play' already include such a USB-2-serial converter.
+</p>
+<p>
+The serial port used to connect to the rig must be configured in the
+preference settings, using for example "COM4".
+</p>
+
+<h3>Yaesu Rigs</h3>
+<p>
+Supported: FT-817, FT-897, maybe more.
+</p>
+<p>
+CAT must be set to 9600 baud in radio's menu.
+</p>
+
+<h3>Icom Rigs</h3>
+<p>
+Supported: IC-746pro, maybe more.
+</p>
+<p>
+CI-V address of radio must be set to 0x66, baud rate to 9600.
+</p>
+
+
+<h3>Details for Setup of 'GUC232A' USB-to-Serial</h3>
+<p>
+In the unlikely case that you happen to use this very type
+of USB-to-Serial converter...
+</p>
+
+<h4>Windows 7</h4>
+<p>
+Actually worked via Plug-and-Play: Plug, 'yes' to 'look for driver on MS Web Site', OK.
+Shows up under Control Panel/System/Hardware/Device Manager "Ports" as "COM3" or "COM4"
+depending on which USB port it's plugged into.
+
+<h4>Mac OS X</h4>
+<ol>
+<li>Get USB-to-serial adapter to work by installing its driver from internet.
+    With USB plugged in, there's a new <code>/dev/tty.PL2303-0000103D</code>,
+    which vanishes when unplugged.
+<li>Set permissions, create the 'lock' directory, add YourUserName to the uucp group:
+    <pre>
+    chmod 666 /dev/tty.PL2303-0000103D
+    mkdir /var/lock
+    chgrp uucp /var/lock
+    chmod 775 /var/lock
+    niutil -readprop / /groups/uucp users
+    niutil -mergeprop / /groups/uucp users YourUserName
+    niutil -readprop / /groups/uucp users
+    </pre>
+</ol>
+
+<h2><a name=license>License</a></h2>
+<p>
+YAHAMP is copyright 2010, 2012 by Kay Kasemir and distributed under the terms of the
+Eclipse Public License (EPL), a copy of which is included in
+this software, see <a href="epl-v10.html">epl-v10.html</a>.
+</p>
+<p>
+The latest CTY.DAT country file is freely available from Jim Reisert, AD1C,
+<a href="http://www.country-files.com">http://www.country-files.com</a>.
+</p>
+<p>
+Flag images are from
+<a href="http://www.customicondesign.com/free-icon/">http://www.customicondesign.com/free-icon</a>,
+a web site which states:
+"All the icons contained in this set are free for non-commercial use."
+</p>
+<p>
+The "Visible Earth" and "Earth's City Lights" images for the map display
+are from the NASA Visible Earth web site,
+<a href="http://visibleearth.nasa.gov/>http://visibleearth.nasa.gov/</a>
+</p>
+<p>
+The Clock font for 7-segment-type displays is from http://philing.net,
+see lib/7LED/readme.txt.
+</p>
+<p>
+The serial communication code uses the RxTx library,
+<a href="http://rxtx.qbang.org">http://rxtx.qbang.org</a>,
+which is licensed under the GNU LGPL.
+For details refer to the full RxTx sources, included as
+rxtx-2.1-7r2.zip in this software.
+</p>
+
+
+<h2><a name="changes">Change Log</a></h2>
+<ul>
+<li>2012-07-07 - V4<br/>
+    Update to Eclipse E4 framework,
+    moved to GitHub.
+</li>
+<li>2010<br/>
+    Published on SourceForge
+</li>
+</ul>
+
+</body>
+</html>

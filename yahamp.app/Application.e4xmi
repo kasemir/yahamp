@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_FiG5MMN-EeGNGoKUpoS97Q" elementId="yahamp.app.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_POfe8MN-EeGNGoKUpoS97Q" elementId="yahamp.app.window" label="%yahamp" x="100" y="100" width="800" height="600">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_FpCq0MOCEeGNGoKUpoS97Q" elementId="yahamp.app.perspectivestack.0">
+      <children xsi:type="advanced:Perspective" xmi:id="_JwhdkMOCEeGNGoKUpoS97Q" elementId="yahamp.app.perspective.main" selectedElement="_P5JBoMOCEeGNGoKUpoS97Q" label="%yahamp">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_P5JBoMOCEeGNGoKUpoS97Q" elementId="yahamp.app.sashcontainer.1" selectedElement="_iwzSAMRwEeGxUuCP2Mz3Ew" horizontal="true">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_iwzSAMRwEeGxUuCP2Mz3Ew" elementId="yahamp.app.sashcontainer.2" containerData="3000" selectedElement="_SvY2AMOCEeGNGoKUpoS97Q">
+            <children xsi:type="basic:PartStack" xmi:id="_SvY2AMOCEeGNGoKUpoS97Q" elementId="yahamp.app.partstack.left.top" containerData="4000"/>
+            <children xsi:type="basic:PartStack" xmi:id="_ouG98MRwEeGxUuCP2Mz3Ew" elementId="yahamp.app.partstack.left.middle" containerData="3500"/>
+            <children xsi:type="basic:PartStack" xmi:id="_oZ_9EMSaEeGfw8Gmsqh_OA" elementId="yahamp.app.partstack.left.bottom" containerData="2500"/>
+          </children>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_16ZisMYpEeGh4vbnqVi6PQ" elementId="yahamp.app.sashcontainer.3">
+            <children xsi:type="basic:PartStack" xmi:id="_VI65MMOCEeGNGoKUpoS97Q" elementId="yahamp.app.partstack.main" containerData="7000"/>
+            <children xsi:type="basic:PartStack" xmi:id="_8PIQIMYpEeGh4vbnqVi6PQ" elementId="yahamp.app.partstack.bottom" containerData="3000"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <mainMenu xmi:id="_lfQm8MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_sHthoMOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.file.menu" label="%menu_file">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_4ZFzsMOtEeGNGoKUpoS97Q" elementId="yahamp.app.menu.file.exit" label="%menu_exit" command="_QqFHoMOIEeGNGoKUpoS97Q"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_PVJqUMOvEeGNGoKUpoS97Q" elementId="yahamp.app.menu.0" label="Debug">
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_S8MpgMOvEeGNGoKUpoS97Q" elementId="yahamp.app.directmenuitem.0" label="Debug" contributionURI="bundleclass://yahamp.app/yahamp.app.handlers.DebugHandler"/>
+      </children>
+      <children xsi:type="menu:Menu" xmi:id="_s1-84MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.help" label="%menu_help">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_OOk5QMOuEeGNGoKUpoS97Q" elementId="yahamp.app.menu.help.about" label="%menu_about" command="_NymRoMZQEeGh4vbnqVi6PQ"/>
+      </children>
+    </mainMenu>
+  </children>
+  <handlers xmi:id="_ZrVFsMOIEeGNGoKUpoS97Q" elementId="" contributionURI="bundleclass://yahamp.app/yahamp.app.handlers.ExitHandler" command="_QqFHoMOIEeGNGoKUpoS97Q"/>
+  <handlers xmi:id="_RV8ckMZQEeGh4vbnqVi6PQ" elementId="" contributionURI="bundleclass://yahamp.app/yahamp.app.handlers.AboutHandler" command="_NymRoMZQEeGh4vbnqVi6PQ"/>
+  <bindingTables xmi:id="_Bnc9UMOFEeGNGoKUpoS97Q" elementId="yahamp.app.bindings" bindingContext="_01yosMOEEeGNGoKUpoS97Q">
+    <bindings xmi:id="_Tn6KsMOIEeGNGoKUpoS97Q" elementId="yahamp.app.bindings.exit" keySequence="M1+Q" command="_QqFHoMOIEeGNGoKUpoS97Q"/>
+  </bindingTables>
+  <rootContext xmi:id="_01yosMOEEeGNGoKUpoS97Q" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
+    <children xmi:id="_4SuCkMOEEeGNGoKUpoS97Q" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
+    <children xmi:id="_7tRd4MOEEeGNGoKUpoS97Q" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
+  </rootContext>
+  <commands xmi:id="_QqFHoMOIEeGNGoKUpoS97Q" elementId="org.eclipse.ui.file.exit" commandName="exitCommand"/>
+  <commands xmi:id="_NymRoMZQEeGh4vbnqVi6PQ" elementId="org.eclipse.ui.help.about" commandName="aboutCommand"/>
+  <addons xmi:id="_FiG5McN-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_FiG5MsN-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_FiG5M8N-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_FiG5NMN-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_FiG5NcN-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_FiG5NsN-EeGNGoKUpoS97Q" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>

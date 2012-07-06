@@ -1,0 +1,51 @@
+
+<?xml version="1.0" encoding="iso8859-1" ?>
+<QRZDatabase version="1.24" xmlns="http://www.qrz.com">
+<Callsign>
+<call>W1AW</call>
+<dxcc>291</dxcc>
+<name>ARRL HQ OPERATORS CLUB</name>
+<addr1>225 MAIN ST</addr1>
+<addr2>NEWINGTON</addr2>
+<state>CT</state>
+<zip>06111</zip>
+<country>United States</country>
+<lat>41.714775</lat>
+<lon>-72.727260</lon>
+<grid>FN31pr</grid>
+<county>Hartford</county>
+<ccode>271</ccode>
+<fips>09003</fips>
+<land>United States</land>
+<efdate>2010-12-02</efdate>
+<expdate>2021-02-26</expdate>
+<trustee>K1ZZ, DAVID G SUMNER</trustee>
+<class>C</class>
+<codes>HAB</codes>
+<qslmgr>Please QSL direct to W1AW with an SASE!</qslmgr>
+<email>W1AW@ARRL.ORG</email>
+<url>http://www.arrl.org/w1aw.html</url>
+<u_views>255798</u_views>
+<bio>http://www.qrz.com/db/W1AW</bio>
+<image>http://files.qrz.com/w/w1aw/w1aw01.jpg</image>
+<moddate>2010-12-03 08:00:03</moddate>
+<MSA>3280</MSA>
+<AreaCode>860</AreaCode>
+<TimeZone>Eastern</TimeZone>
+<GMTOffset>-5</GMTOffset>
+<DST>Y</DST>
+<eqsl>1</eqsl>
+<mqsl>1</mqsl>
+<locref>3</locref>
+<born>1938</born>
+<lotw>1</lotw>
+<user>W1AW</user>
+</Callsign>
+<Session>
+<Key>b9e3f9e2abadf553a579e561aeb65dc6</Key>
+<Count>114</Count>
+<SubExp>Tue Jul  2 00:00:00 2013</SubExp>
+<GMTime>Wed Jul  4 15:32:54 2012</GMTime>
+<Remark>cpu: 0.037s</Remark>
+</Session>
+</QRZDatabase>

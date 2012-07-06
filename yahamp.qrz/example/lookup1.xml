@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso8859-1" ?>
+<QRZDatabase version="1.25" xmlns="http://www.qrz.com">
+<Callsign>
+<call>EA6UN</call>
+<aliases>EC6TK</aliases>
+<dxcc>21</dxcc>
+<fname>Jurek</fname>
+<addr1>QSL via EC6TK with SAE + 3 us $ (Direct Only)</addr1>
+<country>Balearic Islands</country>
+<grid>JM19</grid>
+<ccode>26</ccode>
+<land>Balearic Islands</land>
+<qslmgr>SP4AOQ</qslmgr>
+<u_views>150984</u_views>
+<bio>0</bio>
+<moddate>2002-09-24 12:20:25</moddate>
+<locref>1</locref>
+<user>EA6UN</user>
+</Callsign>
+<Session>
+<Key>b9e3f9e2abadf553a579e561aeb65dc6</Key>
+<Count>116</Count>
+<SubExp>Tue Jul  2 00:00:00 2013</SubExp>
+<GMTime>Wed Jul  4 15:45:57 2012</GMTime>
+<Remark>cpu: 0.024s</Remark>
+</Session>
+</QRZDatabase>

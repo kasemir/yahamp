@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="yahamp.feature"
+      label="Application Feature"
+      version="1.0.0.qualifier"
+      provider-name="Kay Kasemir">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="javax.annotation" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="javax.inject" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.swt" version="3.100.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface" version="3.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.di" version="0.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.core.contexts" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.core.di" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.core.services" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.model.workbench" version="0.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.services" version="0.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.workbench" version="0.10.2" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="yahamp.app"
+         download-size="0"
+         install-size="0"
+         version="4.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.core"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.model"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.qrz"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.rdb"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.rig"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.ui"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="yahamp.flags"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+   <plugin
+         id="org.hamcrest.core"
+         download-size="0"
+         install-size="0"
+         version="1.1.0.v20090501071000"
+         unpack="false"/>
+
+   <plugin
+         id="org.junit"
+         download-size="0"
+         install-size="0"
+         version="4.10.0.v4_10_0_v20120426-0900"/>
+
+   <plugin
+         id="yahamp.help"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"/>
+
+</feature>
