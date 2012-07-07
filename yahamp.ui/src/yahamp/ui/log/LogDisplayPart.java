@@ -7,6 +7,7 @@
 package yahamp.ui.log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,9 +33,16 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 
+import yahamp.model.Category;
 import yahamp.model.QSO;
 import yahamp.rdb.RDB;
 import yahamp.rdb.RDBLogbook;
@@ -47,6 +55,8 @@ import yahamp.ui.previous_qsos.LogTableContentProvider;
  */
 public class LogDisplayPart
 {
+    private static final String ALL = "- All -";
+
     final private Logger logger = Logger.getLogger(getClass().getName());
 
     /** Currently selected {@link QSO} is posted to this event broker
@@ -66,6 +76,9 @@ public class LogDisplayPart
 	 */
 	private QSO selected_qso = null;
 
+	/** QSO category. Index 0 for 'all' */
+    private Combo category;
+
 	/** Create GUI elements
 	 *  @param parent Parent widget
 	 */
@@ -73,6 +86,21 @@ public class LogDisplayPart
 	public void createPartControl(final Composite parent)
 	{
 		createLogTable(parent);
+
+		category.addSelectionListener(new SelectionListener()
+        {
+            @Override
+            public void widgetSelected(final SelectionEvent e)
+            {
+                loadQSOs();
+            }
+
+            @Override
+            public void widgetDefaultSelected(final SelectionEvent e)
+            {
+                widgetSelected(e);
+            }
+        });
 
 		// Publish currently selected QSO
 		viewer.addPostSelectionChangedListener(new ISelectionChangedListener()
@@ -108,10 +136,24 @@ public class LogDisplayPart
 	 */
     private void createLogTable(final Composite parent)
     {
-        final TableColumnLayout layout = new TableColumnLayout();
-		parent.setLayout(layout);
+        parent.setLayout(new GridLayout(2, false));
 
-		viewer = new TableViewer(parent,
+        Label l = new Label(parent, 0);
+        l.setText("Category");
+        l.setLayoutData(new GridData());
+
+        category = new Combo(parent, 0);
+        category.setLayoutData(new GridData(SWT.FILL, 0, true, false));
+        category.setText(ALL);
+
+        // TableColumnLayout requires table to be only widget
+        // in its container, so create box for that
+        final Composite box = new Composite(parent, 0);
+        box.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+        final TableColumnLayout layout = new TableColumnLayout();
+		box.setLayout(layout);
+
+		viewer = new TableViewer(box,
 				SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER |
 				SWT.FULL_SELECTION | SWT.VIRTUAL);
 		viewer.setUseHashlookup(true);
@@ -201,11 +243,14 @@ public class LogDisplayPart
 	/** Load QSOs from logbook */
     private void loadQSOs()
     {
+        final String selected_category = category.getText().trim();
+
         final Job job = new Job("Fetch Log")
         {
     		@Override
     		protected IStatus run(final IProgressMonitor monitor)
     		{
+                final Category[] categories;
     			final List<QSO> qsos;
     			try
     		    (
@@ -213,7 +258,12 @@ public class LogDisplayPart
     		    )
     		    {
     		        final RDBLogbook logbook = new RDBLogbook(rdb);
-    		        logbook.setCategory(null);
+    		        categories = logbook.getCategories();
+
+    		        if (ALL.equals(selected_category))
+    		            logbook.setCategory(null);
+    		        else
+    		            logbook.setCategory(selected_category);
     		        final int count = logbook.getQsoCount();
                     qsos = new ArrayList<>(count);
     		        for (int i=0; i<count; ++i)
@@ -230,6 +280,18 @@ public class LogDisplayPart
                     @Override
                     public void run()
                     {
+                        // Need to update category list?
+                        final String[] cats = new String[1 + categories.length];
+                        cats[0] = ALL;
+                        for (int i=0; i<categories.length; ++i)
+                            cats[i+1] = categories[i].getName();
+                        final String[] items = category.getItems();
+                        if (!Arrays.equals(items, cats))
+                        {   // This flickers, so only done when necessary
+                            category.setItems(cats);
+                            category.setText(selected_category == null ? ALL : selected_category);
+                        }
+                        // Updat QSO table
                         LogDisplayPart.this.qsos = qsos;
                         viewer.setInput(qsos);
                     }

@@ -31,7 +31,7 @@ public class RDB implements AutoCloseable
     	"SELECT c.category, q.utc, q.callsign, q.freq, q.rst_sent, q.rst_rcvd, q.mode, q.info, q.qsl" +
 		" FROM qsos q" +
 		" JOIN categories c on q.category_id = c.id" +
-		" WHERE category_id=?" +
+		" WHERE c.category=?" +
 		" ORDER BY utc";
 
     final public String sel_qsos_for_call =

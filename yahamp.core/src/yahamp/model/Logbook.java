@@ -20,10 +20,10 @@ public interface Logbook
 	 *  @param category Desired category, or <code>null</code> for all entries.
 	 *  @throws Exception on error
 	 */
-	public void setCategory(Category category) throws Exception;
+	public void setCategory(String category) throws Exception;
 
 	/** @return Logbook category, or <code>null</code> for all entries */
-	public Category getCategory();
+	public String getCategory();
 
 	/** @return Number of QSOs in Logbook */
 	public int getQsoCount();

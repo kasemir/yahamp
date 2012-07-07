@@ -32,7 +32,7 @@ public class RDBLogbook implements Logbook
 	final private Categories categories;
 
 	/** Logbook category. <code>null</code> for "all" */
-	private Category category;
+	private String category;
 
     /** All the QSOs in the current <code><category/code> */
     final private List<QSO> qsos = new ArrayList<QSO>();
@@ -56,7 +56,7 @@ public class RDBLogbook implements Logbook
 
     /** {@inheritDoc} */
     @Override
-	public void setCategory(final Category category) throws Exception
+	public void setCategory(final String category) throws Exception
     {
         this.category = category;
         readQSOs();
@@ -75,7 +75,7 @@ public class RDBLogbook implements Logbook
 		)
 		{
 		    if (category != null)
-		        statement.setInt(1, category.getId());
+		        statement.setString(1, category);
 			final ResultSet result = statement.executeQuery();
 			int number = 0;
 			while (result.next())
@@ -122,7 +122,7 @@ public class RDBLogbook implements Logbook
 
     /** {@inheritDoc} */
     @Override
-	public Category getCategory()
+	public String getCategory()
     {
         return category;
     }
