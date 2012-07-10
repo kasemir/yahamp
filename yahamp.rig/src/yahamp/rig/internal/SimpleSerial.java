@@ -100,6 +100,19 @@ public class SimpleSerial implements AutoCloseable
         // Get in/out streams
         out = port.getOutputStream();
         in = port.getInputStream();
+
+        // With the RigBlaster p&p, DTR will trigger the 'CW' output
+        // Send 'V'
+        for (int i=0; i<3; ++i)
+        {
+            port.setDTR(true);
+            Thread.sleep(100);
+            port.setDTR(false);
+            Thread.sleep(100);
+        }
+        port.setDTR(true);
+        Thread.sleep(300);
+        port.setDTR(false);
     }
 
     /** Print info about detected serial and parallel ports

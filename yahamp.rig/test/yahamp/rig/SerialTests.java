@@ -34,7 +34,7 @@ import yahamp.rig.internal.SimpleSerial;
  *  <p>See RxTx Examples for more.
  *
  *  <p>RXTX library issues:
- *  Older version 2.1.7 did not inlude win64 binaries.
+ *  Older version 2.1.7 did not include win64 binaries.
  *  The 2.2pre update offers win64, but generates a version mismatch
  *  warning between its JAR file and DLLs.
  *
