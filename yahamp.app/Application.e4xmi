@@ -4,12 +4,12 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_FpCq0MOCEeGNGoKUpoS97Q" elementId="yahamp.app.perspectivestack.0">
       <children xsi:type="advanced:Perspective" xmi:id="_JwhdkMOCEeGNGoKUpoS97Q" elementId="yahamp.app.perspective.main" selectedElement="_P5JBoMOCEeGNGoKUpoS97Q" label="%yahamp">
         <children xsi:type="basic:PartSashContainer" xmi:id="_P5JBoMOCEeGNGoKUpoS97Q" elementId="yahamp.app.sashcontainer.1" selectedElement="_iwzSAMRwEeGxUuCP2Mz3Ew" horizontal="true">
-          <children xsi:type="basic:PartSashContainer" xmi:id="_iwzSAMRwEeGxUuCP2Mz3Ew" elementId="yahamp.app.sashcontainer.2" containerData="3000" selectedElement="_SvY2AMOCEeGNGoKUpoS97Q">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_iwzSAMRwEeGxUuCP2Mz3Ew" elementId="yahamp.app.sashcontainer.2" containerData="3500" selectedElement="_SvY2AMOCEeGNGoKUpoS97Q">
             <children xsi:type="basic:PartStack" xmi:id="_SvY2AMOCEeGNGoKUpoS97Q" elementId="yahamp.app.partstack.left.top" containerData="4000"/>
             <children xsi:type="basic:PartStack" xmi:id="_ouG98MRwEeGxUuCP2Mz3Ew" elementId="yahamp.app.partstack.left.middle" containerData="3500"/>
             <children xsi:type="basic:PartStack" xmi:id="_oZ_9EMSaEeGfw8Gmsqh_OA" elementId="yahamp.app.partstack.left.bottom" containerData="2500"/>
           </children>
-          <children xsi:type="basic:PartSashContainer" xmi:id="_16ZisMYpEeGh4vbnqVi6PQ" elementId="yahamp.app.sashcontainer.3" containerData="7000">
+          <children xsi:type="basic:PartSashContainer" xmi:id="_16ZisMYpEeGh4vbnqVi6PQ" elementId="yahamp.app.sashcontainer.3" containerData="6500">
             <children xsi:type="basic:PartStack" xmi:id="_VI65MMOCEeGNGoKUpoS97Q" elementId="yahamp.app.partstack.main" containerData="7000"/>
             <children xsi:type="basic:PartStack" xmi:id="_8PIQIMYpEeGh4vbnqVi6PQ" elementId="yahamp.app.partstack.bottom" containerData="3000"/>
           </children>
