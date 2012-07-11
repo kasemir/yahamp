@@ -23,6 +23,9 @@ import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -32,6 +35,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.jface.window.ToolTip;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -39,7 +43,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 
 import yahamp.model.Category;
@@ -86,6 +92,8 @@ public class LogDisplayPart
 	public void createPartControl(final Composite parent)
 	{
 		createLogTable(parent);
+
+		createMenu();
 
 		category.addSelectionListener(new SelectionListener()
         {
@@ -240,7 +248,33 @@ public class LogDisplayPart
         ColumnViewerToolTipSupport.enableFor(viewer, ToolTip.NO_RECREATE);
     }
 
-	/** Load QSOs from logbook */
+    /** Create context menu */
+	private void createMenu()
+    {
+	    final Control control = viewer.getControl();
+	    final MenuManager manager = new MenuManager();
+        manager.add(new Action("Remove")
+        {
+            @Override
+            public void run()
+            {
+                final IStructuredSelection selection =
+                        (IStructuredSelection) viewer.getSelection();
+                if (selection.isEmpty())
+                    return;
+                final QSO qso = (QSO) selection.getFirstElement();
+                if (!  MessageDialog.openConfirm(control.getShell(),
+                        "Delete",
+                        NLS.bind("Delete QSO with {0}?", qso.getCall())))
+                    return;
+                delete(qso);
+            }
+        });
+	    final Menu menu = manager.createContextMenu(control);
+	    control.setMenu(menu);
+    }
+
+    /** Load QSOs from logbook */
     private void loadQSOs()
     {
         final String selected_category = category.getText().trim();
@@ -301,6 +335,27 @@ public class LogDisplayPart
     		}
         };
         job.schedule();
+    }
+
+    /** Delete a QSO
+     *  @param qso QSO to delete
+     */
+    protected void delete(final QSO qso)
+    {
+        try
+        (
+            RDB rdb = new RDB();
+        )
+        {
+            final RDBLogbook logbook = new RDBLogbook(rdb);
+            logbook.delete(qso);
+        }
+        catch (final Exception ex)
+        {
+            logger.log(Level.SEVERE, "Cannot save QSO", ex);
+            return;
+        }
+        viewer.remove(qso);
     }
 
 	/** Select specific QSO in table

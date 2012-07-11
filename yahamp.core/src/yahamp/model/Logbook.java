@@ -44,4 +44,9 @@ public interface Logbook
 	 *  @throws Exception on error
 	 */
     public void save(final QSO qso) throws Exception;
+
+    /** @param qso {@link QSO} to delete from logbook
+     *  @throws Exception on error
+     */
+    public void delete(final QSO qso) throws Exception;
 }

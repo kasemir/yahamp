@@ -192,4 +192,22 @@ public class RDBLogbook implements Logbook
                 throw new Exception("RDB QSO update failed, rows = " + rows);
         }
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void delete(final QSO qso) throws Exception
+    {
+        try
+        (
+            final PreparedStatement statement =
+                rdb.getConnection().prepareStatement(rdb.delete_qso);
+        )
+        {
+            statement.setString(1, qso.getUTC().toString());
+            final int rows = statement.executeUpdate();
+            if (rows > 1)
+                throw new Exception("RDB QSO deletion failed, rows = " + rows);
+            logger.log(Level.FINE, "Deleted QSO " + qso);
+        }
+    }
 }
