@@ -323,6 +323,7 @@ public class LogDisplayPart
         if (index >= 0)
         {   // Update
             logger.log(Level.FINE, "Updating {0}", qso);
+            qso.setNumber(index + 1);
             qsos.set(index, qso);
             viewer.replace(qso, index);
         }
