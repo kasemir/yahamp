@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_bR3CIMSaEeGfw8Gmsqh_OA">
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_bR3CIMSaEeGfw8Gmsqh_OA">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_n2QbsMXrEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.left.top">
     <elements xsi:type="basic:Part" xmi:id="_r-n_QMXrEeGh4vbnqVi6PQ" elementId="yahamp.ui.qso" contributionURI="bundleclass://yahamp.ui/yahamp.ui.qso.QSOEditPart" label="%qso" iconURI="platform:/plugin/yahamp.ui/icons/qso.png"/>
   </fragments>
@@ -16,5 +16,8 @@
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_AxF_cMYqEeGh4vbnqVi6PQ" featurename="children" parentElementId="yahamp.app.partstack.bottom">
     <elements xsi:type="basic:Part" xmi:id="_EqJUoMYqEeGh4vbnqVi6PQ" elementId="yahamp.ui.map" contributionURI="bundleclass://yahamp.ui/yahamp.ui.map.MapDisplayPart" label="%map" iconURI="platform:/plugin/yahamp.ui/icons/earth.png"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_S-oGYM67EeGdKKEL7NZuNg" featurename="children" parentElementId="org.eclipse.ui.menu.edit">
+    <elements xsi:type="menu:DirectMenuItem" xmi:id="_ej0n4M67EeGdKKEL7NZuNg" elementId="yahamp.ui.menu.edit.prefs" label="%preferences" contributionURI="bundleclass://yahamp.ui/yahamp.ui.prefs.PreferenceMenuHandler"/>
   </fragments>
 </fragment:ModelFragments>

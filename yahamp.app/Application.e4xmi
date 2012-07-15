@@ -16,14 +16,15 @@
         </children>
       </children>
     </children>
-    <mainMenu xmi:id="_lfQm8MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.main.menu">
-      <children xsi:type="menu:Menu" xmi:id="_sHthoMOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.file.menu" label="%menu_file">
+    <mainMenu xmi:id="_lfQm8MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.menu.main">
+      <children xsi:type="menu:Menu" xmi:id="_sHthoMOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.menu.file" label="%menu_file">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_4ZFzsMOtEeGNGoKUpoS97Q" elementId="yahamp.app.menu.file.exit" label="%menu_exit" command="_QqFHoMOIEeGNGoKUpoS97Q"/>
       </children>
-      <children xsi:type="menu:Menu" xmi:id="_PVJqUMOvEeGNGoKUpoS97Q" elementId="yahamp.app.menu.0" label="Debug">
+      <children xsi:type="menu:Menu" xmi:id="_rqHlMM66EeGdKKEL7NZuNg" elementId="org.eclipse.ui.menu.edit" label="%menu_edit"/>
+      <children xsi:type="menu:Menu" xmi:id="_PVJqUMOvEeGNGoKUpoS97Q" elementId="yahamp.app.menu.debug" label="Debug">
         <children xsi:type="menu:DirectMenuItem" xmi:id="_S8MpgMOvEeGNGoKUpoS97Q" elementId="yahamp.app.directmenuitem.0" label="Debug" contributionURI="bundleclass://yahamp.app/yahamp.app.handlers.DebugHandler"/>
       </children>
-      <children xsi:type="menu:Menu" xmi:id="_s1-84MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.help" label="%menu_help">
+      <children xsi:type="menu:Menu" xmi:id="_s1-84MOtEeGNGoKUpoS97Q" elementId="org.eclipse.ui.menu.help" label="%menu_help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_OOk5QMOuEeGNGoKUpoS97Q" elementId="yahamp.app.menu.help.about" label="%menu_about" command="_NymRoMZQEeGh4vbnqVi6PQ"/>
       </children>
     </mainMenu>
