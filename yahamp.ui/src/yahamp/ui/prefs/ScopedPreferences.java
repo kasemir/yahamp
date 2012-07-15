@@ -6,8 +6,9 @@
  *******************************************************************************/
 package yahamp.ui.prefs;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.service.prefs.BackingStoreException;
 
@@ -28,19 +29,10 @@ public class ScopedPreferences
     public static String get(final String pref_qualifier, final String pref_key,
             final String default_value)
     {
-        // Try instance preferences
-        IEclipsePreferences node = InstanceScope.INSTANCE.getNode(pref_qualifier);
-        if (node != null)
-        {
-            final String value = node.get(pref_key, null);
-            if (value != null)
-                return value;
-        }
-        // Fall back to default preferences
-        node = DefaultScope.INSTANCE.getNode(pref_qualifier);
-        if (node != null)
-            return node.get(pref_key, default_value);
-        return default_value;
+        final IPreferencesService prefs = Platform.getPreferencesService();
+        if (prefs == null)
+            return default_value;
+        return prefs.getString(pref_qualifier, pref_key, default_value, null);
     }
 
     /** Write preference setting

@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
@@ -23,22 +23,6 @@ import org.osgi.framework.BundleContext;
 import yahamp.logging.LogConfigurator;
 
 /** Bundle activator
- *
- *  TODO: Need -clearPersistedState in product as program arg.
- *
- *  Without that, the saved workbench.xmi
- *  is not loaded properly:
- *
- *
- *  Exception occurred while rendering: org.eclipse.e4.ui.model.application.ui.basic.impl.PartStackImpl@2da0b7ca (elementId: yahamp.app.partstack.bottom, tags: [], contributorURI: platform:/plugin/yahamp.app) (widget: CTabFolder {}, renderer: org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer@2a30aa7d, toBeRendered: true, onTop: false, visible: true, containerData: 3000, accessibilityPhrase: null)
-!STACK 0
-java.lang.NullPointerException
-    at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.showTab(LazyStackRenderer.java:156)
- *
- * The LazyStackRenderer.java:156 code is  ~part.getParent()... and parent returns null.
- *
- *  With a new workspace, or  -clearPersistedState in the args, all is fine.
- *
  *  @author Kay Kasemir
  */
 public class Activator implements BundleActivator
@@ -53,7 +37,7 @@ public class Activator implements BundleActivator
     private final List<Logger> log_refs = new ArrayList<>();
     private static Bundle bundle;
 
-    //  TODO Preferences should get injected...
+    //  Preference injection only works for e4 model elements...
     @Inject
     @Preference(nodePath="yahamp.app", value="log_level")
     private String log_level = "FINE";
@@ -65,8 +49,8 @@ public class Activator implements BundleActivator
 	    bundle = context.getBundle();
 
 	    // Read preferences from scope because injection fails
-	    IEclipsePreferences prefs = DefaultScope.INSTANCE.getNode(ID);
-        log_level = prefs.get("log_level", "INFO");
+        final IPreferencesService prefs = Platform.getPreferencesService();
+        log_level = prefs.getString(ID, "log_level", "INFO", null);
 
 	    LogConfigurator.setLevel(Level.parse(log_level));
 	    log_refs.add(Logger.getLogger(""));

@@ -6,8 +6,8 @@
  *******************************************************************************/
 package yahamp.rig.internal;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 
 import yahamp.rig.Activator;
 
@@ -29,17 +29,17 @@ public class Preferences
 	    // Rig* classes are not part of the E4 application model.
 	    // Can therefore not use @Inject @Preference but
 	    // have to access the preferences directly.
-        final IEclipsePreferences prefs = DefaultScope.INSTANCE.getNode(Activator.ID);
+        final IPreferencesService prefs = Platform.getPreferencesService();
         if (prefs != null)
-            port = prefs.get(PORT, port);
+            port = prefs.getString(Activator.ID, PORT, port, null);
         return port;
     }
 
 	public static int getRate()
     {
-        final IEclipsePreferences prefs = DefaultScope.INSTANCE.getNode(Activator.ID);
+        final IPreferencesService prefs = Platform.getPreferencesService();
         if (prefs != null)
-        	rate = prefs.getInt(RATE, rate);
+        	rate = prefs.getInt(Activator.ID, RATE, rate, null);
         return rate;
     }
 }

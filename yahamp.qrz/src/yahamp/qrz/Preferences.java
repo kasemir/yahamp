@@ -6,8 +6,8 @@
  *******************************************************************************/
 package yahamp.qrz;
 
-import org.eclipse.core.runtime.preferences.DefaultScope;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 
 /** Read preference settings.
  *  For explanation of settings see preferences.ini
@@ -37,9 +37,9 @@ public class Preferences
         // QRZ classes are not part of the E4 application model.
         // Can therefore not use @Inject @Preference but
         // have to access the preferences directly.
-        final IEclipsePreferences prefs = DefaultScope.INSTANCE.getNode(Activator.ID);
+        final IPreferencesService prefs = Platform.getPreferencesService();
         if (prefs != null)
-            text = prefs.get(preference, text);
+            text = prefs.getString(Activator.ID, preference, text, null);
         return text;
     }
 
