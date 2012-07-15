@@ -18,6 +18,6 @@
     <elements xsi:type="basic:Part" xmi:id="_EqJUoMYqEeGh4vbnqVi6PQ" elementId="yahamp.ui.map" contributionURI="bundleclass://yahamp.ui/yahamp.ui.map.MapDisplayPart" label="%map" iconURI="platform:/plugin/yahamp.ui/icons/earth.png"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_S-oGYM67EeGdKKEL7NZuNg" featurename="children" parentElementId="org.eclipse.ui.menu.edit">
-    <elements xsi:type="menu:DirectMenuItem" xmi:id="_ej0n4M67EeGdKKEL7NZuNg" elementId="yahamp.ui.menu.edit.prefs" label="%preferences" contributionURI="bundleclass://yahamp.ui/yahamp.ui.prefs.PreferenceMenuHandler"/>
+    <elements xsi:type="menu:DirectMenuItem" xmi:id="_ej0n4M67EeGdKKEL7NZuNg" elementId="yahamp.ui.menu.edit.prefs" label="%preferences" iconURI="platform:/plugin/yahamp.ui/icons/preferences.gif" contributionURI="bundleclass://yahamp.ui/yahamp.ui.prefs.PreferenceMenuHandler"/>
   </fragments>
 </fragment:ModelFragments>
