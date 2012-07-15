@@ -1,0 +1,21 @@
+
+<h2>ModelUtils.java</h2>
+
+<p>Fix for 
+<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=382184">Eclipse bug 382184</a>
+that caused NPE when re-loading a saved model,
+requiring the command-line option <code>-clearPersistedState</code>
+to clean the workspace on each startup.
+Eric Moffatt posted this patch to the bug report.
+</p>
+
+<ul>
+<li>In the IDE, open the Plug-ins view.</li>
+<li>Import plugin <code>org.eclipse.e4.ui.model.workbench</code> as "Source Project"</li>
+<li>In the imported source code, replace <code>org.eclipse.e4.ui.model.internal.ModelUtils</code>
+    with the patched version.
+</li>
+<li>'Export' of the product from the IDE also seems to use the plugin sources
+    from the workspace. No need to update the 'Target' platform.
+</li>
+</ul>
