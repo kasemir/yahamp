@@ -158,11 +158,9 @@ public class PreviousQSOsPart
     @Optional
     public void lookupQSOs(@UIEventTopic(Activator.TOPIC) final Callsign callsign)
     {
-        if (callsign == current_call)
-        {   // Avoid recursion
-            logger.log(Level.FINE, "Ignoring QSO");
+        // Avoid recursion or redundant lookups
+        if (callsign == null  ||  callsign.equals(current_call))
             return;
-        }
         current_call = callsign;
         logger.log(Level.FINE, "Received {0}", current_call);
         if (callsign == null  ||  call == null  ||  call.isDisposed())

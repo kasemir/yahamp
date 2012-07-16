@@ -87,7 +87,7 @@ public class CallEditPart
     private IEventBroker event_broker;
 
     /** Call info posted by this part to avoid recursion */
-    private volatile CallInfo posted_call = null;
+    private volatile String current_call = null;
 
     @Inject
     private EPartService part_service;
@@ -485,7 +485,7 @@ public class CallEditPart
 
         if (event_broker != null)
         {
-            posted_call = info;
+            current_call = info.getCall();
             event_broker.post(Activator.TOPIC, info);
         }
     }
@@ -503,14 +503,18 @@ public class CallEditPart
      *  @param call_or_qso Currently selected {@link Callsign} or {@link QSO}
      */
     @Inject
-    public void setCallsign(@Optional @UIEventTopic(Activator.TOPIC) final Callsign call_or_qso)
+    @Optional
+    public void setCallsign(@UIEventTopic(Activator.TOPIC) final Callsign call_or_qso)
     {
-        if (call_or_qso == posted_call  ||  call.isDisposed())
+        if (call_or_qso == null ||
+            call == null  ||  call.isDisposed()  ||
+            call_or_qso.getCall().equals(current_call))
             return;
         logger.log(Level.FINE, "Received {0}", call_or_qso);
         if (call_or_qso != null)
         {
-            call.setText(call_or_qso.getCall());
+            current_call = call_or_qso.getCall();
+            call.setText(current_call);
             startCallLookup(call_or_qso.getCall());
         }
     }
