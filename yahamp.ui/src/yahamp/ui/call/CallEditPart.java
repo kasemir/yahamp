@@ -505,7 +505,7 @@ public class CallEditPart
     @Inject
     public void setCallsign(@Optional @UIEventTopic(Activator.TOPIC) final Callsign call_or_qso)
     {
-        if (call_or_qso == posted_call)
+        if (call_or_qso == posted_call  ||  call.isDisposed())
             return;
         logger.log(Level.FINE, "Received {0}", call_or_qso);
         if (call_or_qso != null)
