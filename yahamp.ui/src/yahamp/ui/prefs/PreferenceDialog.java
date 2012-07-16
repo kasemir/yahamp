@@ -72,7 +72,7 @@ public class PreferenceDialog extends Dialog
         editors.add(new PreferenceEditorRow(top, "QRZ.com Password:", "yahamp.qrz", "password"));
         separator(top);
         editors.add(new PreferenceEditorRow(top, "Rig Control Port:", "yahamp.rig", "port"));
-        editors.add(new PreferenceEditorRow(top, "Rig Control Rate:", "yahamp.rate", "rate"));
+        editors.add(new PreferenceEditorRow(top, "Rig Control Rate:", "yahamp.rig", "rate"));
         separator(top);
         editors.add(new PreferenceEditorRow(top, "Log level:", "yahamp.app", "log_level"));
 
