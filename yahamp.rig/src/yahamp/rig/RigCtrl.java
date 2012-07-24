@@ -26,9 +26,6 @@ public abstract class RigCtrl implements AutoCloseable
 {
     final protected static Logger logger = Logger.getLogger(RigCtrl.class.getName());
 
-    /** Compile-time flag to enable debug messages */
-	final public static boolean debug = false;
-
 	/** Detect rig
 	 *
 	 *  <p>Issues test commands to determine the rig that it
@@ -66,7 +63,10 @@ public abstract class RigCtrl implements AutoCloseable
 	        {
 		        final String mode = Yaesu.decodeMode(response[4]);
 		        if (! mode.contains("?"))
+		        {
+		            logger.log(Level.FINE, "Identified Yaesu, mode {0}", mode);
 		        	return RigModel.Yaesu;
+		        }
 	        }
 
 	        // Assume it's Icom, missing the 'END'
@@ -76,7 +76,11 @@ public abstract class RigCtrl implements AutoCloseable
 	        // Expect freq. info
 	        response = port.read(11);
 	        if (Icom.checkResponse(response) == null)
+	        {
+	            final long freq = Icom.decodeFreqHz(response);
+                logger.log(Level.FINE, "Identified Icom, freq {0}", freq);
 	        	return RigModel.Icom;
+	        }
 		}
 		catch (final TimeoutException ex)
 		{

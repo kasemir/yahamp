@@ -9,6 +9,7 @@ package yahamp.rig.internal;
 import static yahamp.rig.internal.Hex.hex;
 
 import java.util.Arrays;
+import java.util.logging.Level;
 
 import yahamp.rig.RigCtrl;
 import yahamp.rig.RigInfo;
@@ -44,8 +45,9 @@ public class Icom extends RigCtrl
         // Icom allows 4800, 9600 or 38400 baud??, no parity, 1 stop bits
         if (rate != 4800  &&  rate != 9600  &&  rate != 38400)
             throw new Exception("Unsupported baud rate " + rate);
-        if (RigCtrl.debug)
-        	System.out.println("Opening Icon at " + port_name + ", " + rate + " baud");
+        RigCtrl.logger.log(Level.FINER,
+                "Opening Icom at {0}, {1} baud",
+                new Object[] { port_name, rate });
         port = new SimpleSerial(port_name, rate, 8,
                                 SimpleSerial.Parity.None, 1, 5.0);
     }
@@ -119,6 +121,15 @@ public class Icom extends RigCtrl
     	}
     }
 
+    public static long decodeFreqHz(final byte[] response)
+    {
+        return BCD.decode(response[9]) * 100000000 +
+               BCD.decode(response[8]) * 1000000 +
+               BCD.decode(response[7]) * 10000 +
+               BCD.decode(response[6]) * 100  +
+               BCD.decode(response[5]);
+    }
+
     /** {@inheritDoc}  */
     @Override
     public RigInfo poll() throws Exception
@@ -132,14 +143,9 @@ public class Icom extends RigCtrl
          * Data: 0xfe,0xfe,0xe0,0x66,0x03,0x00,0x50,0x12,0x50,0x00,0xfd
          *       for 0050.12500 MHz
          */
-        if (RigCtrl.debug)
-        	System.out.println(hex(response));
-        final long new_freq_Hz = BCD.decode(response[9]) * 100000000 +
-                                 BCD.decode(response[8]) * 1000000 +
-                                 BCD.decode(response[7]) * 10000 +
-                                 BCD.decode(response[6]) * 100  +
-                                 BCD.decode(response[5]);
-
+        if (RigCtrl.logger.isLoggable(Level.FINER))
+            RigCtrl.logger.log(Level.FINER, "Response: {0}", hex(response));
+        final long new_freq_Hz = decodeFreqHz(response);
         response = query(new byte[]
         {
             (byte)PREAMBLE, (byte)PREAMBLE, (byte)address, (byte)0xE0,

@@ -40,8 +40,9 @@ public class Yaesu extends RigCtrl
         if (rate != 4800  &&  rate != 9600  &&  rate != 38400)
             throw new Exception("Unsupported baud rate " + rate);
 
-        if (RigCtrl.debug)
-        	System.out.println("Opening Yaese at " + port_name + ", " + rate + " baud");
+        RigCtrl.logger.log(Level.FINER,
+                "Opening Yaesu at {0}, {1} baud",
+                new Object[] { port_name, rate });
         port = new SimpleSerial(port_name, rate, 8,
                                 SimpleSerial.Parity.None, 2, 5.0);
     }
@@ -107,8 +108,8 @@ public class Yaesu extends RigCtrl
     public RigInfo poll() throws Exception
     {
         final byte[] response = query(new byte[] { 0, 0, 0, 0, CMD_READ_FREQ });
-        if (RigCtrl.debug)
-        	System.out.println(hex(response));
+        if (RigCtrl.logger.isLoggable(Level.FINER))
+            RigCtrl.logger.log(Level.FINER, "Response: {0}", hex(response));
         final long new_freq_Hz = BCD.decode(response[0]) * 10000000 +
                                  BCD.decode(response[1]) * 100000 +
                                  BCD.decode(response[2]) * 1000 +

@@ -27,9 +27,9 @@ public class RigTest
     public void configLogger()
     {
         final Logger logger = Logger.getLogger("");
-        logger.setLevel(Level.FINE);
+        logger.setLevel(Level.FINER);
         for (final Handler handler : logger.getHandlers())
-            handler.setLevel(Level.FINE);
+            handler.setLevel(Level.FINER);
     }
 
 

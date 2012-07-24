@@ -183,7 +183,7 @@ public class SimpleSerial implements AutoCloseable
      */
     private SerialPort openSerialPort(final String port_name) throws Exception
     {
-        logger.log(Level.FINE, "Locate {0}", port_name);
+        logger.log(Level.FINER, "Locate {0}", port_name);
         final CommPortIdentifier port = CommPortIdentifier.getPortIdentifier(port_name);
         if (port != null  &&
             port.getPortType() == CommPortIdentifier.PORT_SERIAL &&
@@ -208,7 +208,7 @@ public class SimpleSerial implements AutoCloseable
         try
         {
             port.close();
-            logger.log(Level.FINE, "Closed");
+            logger.log(Level.FINER, "Closed");
         }
         catch (final Exception ex)
         {
