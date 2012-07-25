@@ -253,17 +253,19 @@ public class QSOEditPart implements RigListener
                     }
                 }
 
+                final String prev_call = template.getCall();
                 final QSO qso =
                         QSOParser.analyze(entry.getText(), template);
                 if (qso != null)
                 {
                     showQso(qso);
 
-                    // Post call sign via event broker
-                    if (event_broker != null)
+                    final Callsign newcall = qso.getCallsign();
+                    // Post new call sign via event broker
+                    if (event_broker != null  &&  !newcall.getCall().equals(prev_call))
                     {
-                        logger.log(Level.FINE, "Posting {0}", qso);
-                        event_broker.post("yahamp", qso.getCallsign());
+                        logger.log(Level.FINE, "Posting {0}", newcall);
+                        event_broker.post("yahamp", newcall);
                     }
                 }
             }
@@ -433,7 +435,8 @@ public class QSOEditPart implements RigListener
             logbook.save(qso);
 
             // Update rest of app about new/updated QSO
-            event_broker.post(Activator.TOPIC, qso);
+            if (event_broker != null)
+                event_broker.post(Activator.TOPIC, qso);
         }
         catch (final Exception ex)
         {
