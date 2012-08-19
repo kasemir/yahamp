@@ -6,7 +6,9 @@
  *******************************************************************************/
 package yahamp;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static yahamp.UTCDateMatcher.isDate;
 
 import org.junit.Test;
 
@@ -24,7 +26,7 @@ public class UTCTest
         final UTC utc = new UTC();
         System.out.println("IT'S: " + utc.toString() + " Zulu");
         System.out.println("Time zone: " + UTC.getTimeZone().getDisplayName());
-        assertEquals(0, UTC.getTimeZone().getRawOffset());
+        assertThat(UTC.getTimeZone().getRawOffset(), equalTo(0));
 	}
 
     @Test
@@ -32,27 +34,27 @@ public class UTCTest
     {
         UTC utc = new UTC();
         utc = new UTC("1970-01-01", "00:00:10");
-        assertEquals("1970-01-01 00:00:10", utc.toString());
-        assertEquals("Really stored as  UTC?",
-                     // 10 ms
-                     10000,
-                     utc.getCalendar().getTimeInMillis(), 0.1);
+        assertThat(utc, isDate("1970-01-01 00:00:10"));
+        assertThat("Really stored as  UTC?",
+                utc.getCalendar().getTimeInMillis(),
+                equalTo(10000L)// 10 ms
+                );
 
-        assertEquals(1970, utc.getYear());
-        assertEquals(1, utc.getMonth());
-        assertEquals(1, utc.getDay());
+        assertThat(utc.getYear(), equalTo(1970));
+        assertThat(utc.getMonth(), equalTo(1));
+        assertThat(utc.getDay(), equalTo(1));
 
         utc = new UTC("2007-01-18", "13:14");
-		assertEquals("2007-01-18 13:14:00", utc.toString());
-        assertEquals(13, utc.getHours());
-        assertEquals(14, utc.getMinutes());
-        assertEquals(0, utc.getSeconds());
+        assertThat(utc, isDate("2007-01-18 13:14:00"));
+        assertThat(utc.getHours(), equalTo(13));
+        assertThat(utc.getMinutes(), equalTo(14));
+        assertThat(utc.getSeconds(), equalTo(0));
 
 		utc = new UTC("2007-01-18", "1314");
-		assertEquals("2007-01-18 13:14:00", utc.toString());
+		assertThat(utc, isDate("2007-01-18 13:14:00"));
 
 		utc = new UTC("2007-01-18", "13:14:02");
-		assertEquals("2007-01-18 13:14:02", utc.toString());
+		assertThat(utc, isDate("2007-01-18 13:14:02"));
 	}
 
     /** Check 'local' flag */
@@ -60,12 +62,12 @@ public class UTCTest
 	public void testLocal() throws Exception
 	{
 		UTC utc = new UTC("2008-11-22", "11:00l");
-        assertEquals("2008-11-22 16:00:00", utc.toString());
+		assertThat(utc, isDate("2008-11-22 16:00:00"));
 
         utc = new UTC("2008-11-22", "l11:00");
-        assertEquals("2008-11-22 16:00:00", utc.toString());
+        assertThat(utc, isDate("2008-11-22 16:00:00"));
 
         utc = new UTC("2008-11-22", "11l00");
-        assertEquals("2008-11-22 16:00:00", utc.toString());
+        assertThat(utc, isDate("2008-11-22 16:00:00"));
 	}
 }
