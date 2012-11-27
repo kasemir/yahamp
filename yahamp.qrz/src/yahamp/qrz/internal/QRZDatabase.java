@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  *  @author Kay Kasemir
  */
-@XmlRootElement(name="QRZDatabase", namespace="http://www.qrz.com")
+@XmlRootElement(name="QRZDatabase", namespace="http://xmldata.qrz.com")
 @XmlAccessorType(XmlAccessType.NONE)
 public class QRZDatabase
 {

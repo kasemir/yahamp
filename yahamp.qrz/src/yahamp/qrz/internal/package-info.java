@@ -7,15 +7,15 @@
 // JAXB Magic
 //
 // QRZDatabase uses xmlns with no prefix:
-// <QRZDatabase version="1.18" xmlns="http://www.qrz.com">
+// <QRZDatabase version="1.18" xmlns="http://xmldata.qrz.com">
 //
 // JAXB would by default use a prefix like "ns2":
-// <ns2:QRZDatabase version="1.18" xmlns:ns2="http://www.qrz.com">
+// <ns2:QRZDatabase version="1.18" xmlns:ns2="http://xmldata.qrz.com">
 //
 // The XmlSchema sets the prefix to ""
-@XmlSchema(namespace = "http://www.qrz.com",
+@XmlSchema(namespace = "http://xmldata.qrz.com",
     xmlns = {
-        @XmlNs(namespaceURI = "http://www.qrz.com", prefix = "")
+        @XmlNs(namespaceURI = "http://xmldata.qrz.com", prefix = "")
     },
     elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 

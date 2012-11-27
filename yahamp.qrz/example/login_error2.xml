@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso8859-1" ?>
-<QRZDatabase version="1.24" xmlns="http://www.qrz.com">
+<QRZDatabase version="1.24" xmlns="http://xmldata.qrz.com">
 <Session>
 <Error>Username unknown</Error>
 <GMTime>Sun Jun 24 15:05:46 2012</GMTime>

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!-- Example response to failed login request --> 
-<QRZDatabase version="1.18" xmlns="http://www.qrz.com">
+<QRZDatabase version="1.18" xmlns="http://xmldata.qrz.com">
   <Session>
     <Error>password incorrect</Error>
     <Message>A valid account is required</Message>

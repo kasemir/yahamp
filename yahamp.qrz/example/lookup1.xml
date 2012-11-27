@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso8859-1" ?>
-<QRZDatabase version="1.25" xmlns="http://www.qrz.com">
+<QRZDatabase version="1.25" xmlns="http://xmldata.qrz.com">
 <Callsign>
 <call>EA6UN</call>
 <aliases>EC6TK</aliases>

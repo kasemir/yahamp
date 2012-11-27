@@ -71,7 +71,7 @@ public class QRZCallBook implements CallBook
     {
 		logger.log(Level.FINE, "Logging into QRZ as {0}", call);
 		final URL url =
-			new URL("http://www.qrz.com/xml/current/?username=" + call
+			new URL("http://xmldata.qrz.com/xml/current/?username=" + call
 					+ ";password=" + password + ";agent=yahamp");
 
 		final BufferedInputStream stream = new BufferedInputStream(url.openStream());
@@ -107,7 +107,7 @@ public class QRZCallBook implements CallBook
 		// Perform network lookup
 		logger.log(Level.FINE, "Lookup {0}...", call);
 		final String url =
-	        "http://www.qrz.com/xml/current/?s=" + session.getKey() + ";callsign=" + call;
+	        "http://xmldata.qrz.com/xml/current/?s=" + session.getKey() + ";callsign=" + call;
 		final BufferedInputStream stream =
 	        new BufferedInputStream(new URL(url).openStream());
 		final QRZDatabase qrz_database = QRZDatabase.fromStream(stream);

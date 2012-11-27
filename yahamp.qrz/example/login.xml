@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <!-- Example response to login request:
-    http://www.qrz.com/xml?username=xx1xxx;password=abcdef;agent=yahamp
+`    http://xmldata.qrz.com/xml/current/?username=xx1xxx;password=abcdef;agent=yahamp
+    
   --> 
-<QRZDatabase version="1.18" xmlns="http://www.qrz.com">
+<QRZDatabase version="1.18" xmlns="http://xmldata.qrz.com">
   <Session>
     <Key>12345abcdef</Key> 
     <Count>123</Count> 
