@@ -7,7 +7,8 @@
    </configIni>
 
    <launcherArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <launcher name="Yahamp">
@@ -24,7 +25,7 @@
    </plugins>
 
    <features>
-      <feature id="org.eclipse.e4.rcp" version="1.1.0.v20120521-2329-8yFTIGF3GGduEYqkQB9M3DKn"/>
+      <feature id="org.eclipse.e4.rcp"/>
       <feature id="yahamp.feature" version="1.0.0.qualifier"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
