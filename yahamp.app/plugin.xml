@@ -16,10 +16,6 @@
                name="applicationCSS"
                value="platform:/plugin/yahamp.app/css/default.css">
          </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
       </product>
    </extension>
 

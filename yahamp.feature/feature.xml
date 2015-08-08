@@ -81,22 +81,22 @@
          version="1.0.0.qualifier"/>
 
    <plugin
-         id="org.hamcrest.core"
+         id="yahamp.help"
          download-size="0"
          install-size="0"
-         version="1.1.0.v20090501071000"
-         unpack="false"/>
+         version="1.0.0.qualifier"/>
 
    <plugin
          id="org.junit"
          download-size="0"
          install-size="0"
-         version="4.10.0.v4_10_0_v20120426-0900"/>
+         version="0.0.0"/>
 
    <plugin
-         id="yahamp.help"
+         id="org.hamcrest.core"
          download-size="0"
          install-size="0"
-         version="1.0.0.qualifier"/>
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
